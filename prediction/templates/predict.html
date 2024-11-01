@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Prediction</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Blood Donation Prediction</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="recency">Recency:</label>
+        <input type="text" id="recency" name="recency" required>
+        
+        <label for="frequency">Frequency:</label>
+        <input type="text" id="frequency" name="frequency" required>
+        
+        <label for="monetary">Monetary:</label>
+        <input type="text" id="monetary" name="monetary" required>
+        
+        <label for="time">Time:</label>
+        <input type="text" id="time" name="time" required>
+        
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if prediction_result %}
+    <h2>Prediction: {{ prediction_result }}</h2>
+    <h3>Confidence: {{ confidence }}%</h3>
+{% endif %}
+
+</body>
+</html>
